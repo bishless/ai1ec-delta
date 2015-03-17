@@ -35,16 +35,7 @@
 									</div>
 									<span class="ai1ec-event-title delta-agenda-title">
 										{# ATTEMPT New Colorized Category indicator#}
-										{# set categories = event.categories_html %}
-										{# if categories is not empty #}
-											{# for term in categories #}
-												{% if event.term.color is empty %}
-													<i class="delta-color-swatch ai1ec-fa ai1ec-fa-circle-o {{ term.term_id | raw }}"></i>
-												{% else %}
-													<i class="delta-color-swatch ai1ec-fa ai1ec-fa-circle {{ term.term_id | raw }}" {{ event.term.color | raw }}></i>
-												{% endif %}
-											{# endfor #}
-										{# endif #}
+
 										{# END ATTEMPT New Colorized Category indicator #}
 										{{ event.filtered_title | raw }}
 										{% if show_location_in_title and event.venue is not empty %}
@@ -99,18 +90,19 @@
 										{% set tags       = event.tags_html %}
 										{% if categories is not empty %}
 											<span class="ai1ec-categories">
-												<span class="ai1ec-field-label">
-													<i class="ai1ec-fa ai1ec-fa-folder-open"></i>
-													{{ text_categories }}
+												<span class="ai1ec-field-label" title="Speaker or Category">
+													<i class="ai1ec-fa ai1ec-fa-user"></i> /
+													<i class="ai1ec-fa ai1ec-fa-folder-open"></i>:
+													{# text_categories #}
 												</span>
 												{{ categories | raw }}
 											</span>
 										{% endif %}
 										{% if tags is not empty %}
 											<span class="ai1ec-tags">
-												<span class="ai1ec-field-label">
-													<i class="ai1ec-fa ai1ec-fa-tags"></i>
-													{{ text_tags }}
+												<span class="ai1ec-field-label" title="Tags">
+													<i class="ai1ec-fa ai1ec-fa-tags"></i>:
+													{# text_tags #}
 												</span>
 												{{ tags | raw }}
 											</span>
